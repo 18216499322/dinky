@@ -17,35 +17,50 @@
  *
  */
 
-import { Card, Typography } from 'antd';
+package org.dinky.data.bo.catalogue.export;
 
-const { Text, Paragraph } = Typography;
+import org.dinky.data.model.ext.TaskExtConfig;
 
-const DagPlanNode = (props: any) => {
-  const { node } = props;
-  const data: any = node?.getData();
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-  return (
-    <Card
-      style={{ width: 'inherit', padding: 0, margin: 0, height: 'inherit' }}
-      bordered={false}
-      size={'small'}
-      type={'inner'}
-      hoverable={true}
-      title={data.description}
-      extra={<Text keyboard>{data.parallelism}</Text>}
-    >
-      <Paragraph
-        ellipsis={{
-          tooltip: { title: data.description, zIndex: 2000 },
-          rows: 3
-        }}
-      >
-        <blockquote>
-          <Text>{data.description}</Text>
-        </blockquote>
-      </Paragraph>
-    </Card>
-  );
-};
-export default DagPlanNode;
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class ExportTaskBO {
+
+    private String name;
+
+    private String dialect;
+
+    private String type;
+
+    private Integer checkPoint;
+
+    private Integer savePointStrategy;
+
+    private Integer parallelism;
+
+    private Boolean fragment;
+
+    private Boolean statementSet;
+
+    private Boolean batchModel;
+
+    private Integer envId;
+
+    private Integer alertGroupId;
+
+    private TaskExtConfig configJson;
+
+    private String note;
+
+    private Integer step;
+
+    private Boolean enabled;
+
+    private String statement;
+}

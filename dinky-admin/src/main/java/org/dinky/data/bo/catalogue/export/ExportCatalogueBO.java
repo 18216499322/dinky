@@ -17,35 +17,30 @@
  *
  */
 
-import { Card, Typography } from 'antd';
+package org.dinky.data.bo.catalogue.export;
 
-const { Text, Paragraph } = Typography;
+import java.util.List;
 
-const DagPlanNode = (props: any) => {
-  const { node } = props;
-  const data: any = node?.getData();
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-  return (
-    <Card
-      style={{ width: 'inherit', padding: 0, margin: 0, height: 'inherit' }}
-      bordered={false}
-      size={'small'}
-      type={'inner'}
-      hoverable={true}
-      title={data.description}
-      extra={<Text keyboard>{data.parallelism}</Text>}
-    >
-      <Paragraph
-        ellipsis={{
-          tooltip: { title: data.description, zIndex: 2000 },
-          rows: 3
-        }}
-      >
-        <blockquote>
-          <Text>{data.description}</Text>
-        </blockquote>
-      </Paragraph>
-    </Card>
-  );
-};
-export default DagPlanNode;
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class ExportCatalogueBO {
+
+    private String name;
+
+    private Boolean enabled;
+
+    private Boolean isLeaf;
+
+    private ExportTaskBO task;
+
+    private String type;
+
+    private List<ExportCatalogueBO> children;
+}

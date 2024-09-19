@@ -17,35 +17,25 @@
  *
  */
 
-import { Card, Typography } from 'antd';
+package org.dinky.data.vo;
 
-const { Text, Paragraph } = Typography;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-const DagPlanNode = (props: any) => {
-  const { node } = props;
-  const data: any = node?.getData();
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ApiModel(value = "ExportCatalogueVO", description = "The return value of export catalogue")
+public class ExportCatalogueVO {
 
-  return (
-    <Card
-      style={{ width: 'inherit', padding: 0, margin: 0, height: 'inherit' }}
-      bordered={false}
-      size={'small'}
-      type={'inner'}
-      hoverable={true}
-      title={data.description}
-      extra={<Text keyboard>{data.parallelism}</Text>}
-    >
-      <Paragraph
-        ellipsis={{
-          tooltip: { title: data.description, zIndex: 2000 },
-          rows: 3
-        }}
-      >
-        <blockquote>
-          <Text>{data.description}</Text>
-        </blockquote>
-      </Paragraph>
-    </Card>
-  );
-};
-export default DagPlanNode;
+    @ApiModelProperty(value = "FileName", dataType = "String", example = "data.json")
+    private String fileName;
+
+    @ApiModelProperty(value = "DataJson", dataType = "String")
+    private String dataJson;
+}
